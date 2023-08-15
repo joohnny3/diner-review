@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+
+    public function diner()
+    {
+        return $this->belongsTo(Diner::class);
+    }
 }
