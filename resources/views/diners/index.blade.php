@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="mb-10 text-2xl">Restaurants</h1>
+    <h1 class="mb-10 text-2xl">
+        <i class="fa-solid fa-utensils fa-xs" style="color: #0c0c0e;"></i> Restaurants 
+    </h1>
 
     <form action="{{ route('diners.index') }}" method="GET" class="mb-4 flex items-center space-x-2">
         <input type="text" name="title" placeholder="搜尋餐廳" value="{{ request('title') }}" class="input h-10">
@@ -45,7 +47,7 @@
                                 {{ number_format($diner->reviews_avg_rating, 1) }}
                             </div>
                             <div class="diner-review-count"></div>
-                            out of {{ $diner->reviews_count }}
+                            {{ $diner->reviews_count }}
                             {{ Str::plural('review', $diner->reviews_count) }}
                         </div>
                     </div>

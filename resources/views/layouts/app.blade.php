@@ -6,6 +6,7 @@
   <title>Restaurants</title>
   <link rel="icon" href="{{ asset('image/cutlery.png') }}" type="image/png">
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <script src="https://kit.fontawesome.com/59074ffc1b.js" crossorigin="anonymous"></script>
 
   {{-- blade-formatter-disable --}}
   <style type="text/tailwindcss">

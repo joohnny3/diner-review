@@ -13,12 +13,21 @@ class DinerController extends Controller
     public function index(Request $request)
     {
         $title = $request->input('title');
+        $filter = $request->input('filter', '');
 
         $diners = Diner::when(
             $title,
             fn ($query, $title) => $query->title($title)
-        )
-            ->get();
+        );
+        
+        $diners = match ($filter) {
+            'popular_last_month' => $diners->popularLastMonth(),
+            'popular_last_6months' => $diners->popularLast6Months(),
+            'highest_rated_last_month' => $diners->highestRatedLastMonth(),
+            'highest_rated_last_6months' => $diners->highestRatedLast6Months(),
+            default => $diners->latest()
+        };
+        $diners = $diners->get();
 
         return view('diners.index', ['diners' => $diners]);
     }
