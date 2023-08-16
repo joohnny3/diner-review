@@ -29,7 +29,7 @@ class DinerController extends Controller
         };
 
         $cacheKey = 'diners:' . $filter . ':' . $title;
-        $diners = cache()->remember($cacheKey, 3600, fn() => $diners->get());
+        $diners = cache()->remember($cacheKey, 3600, fn () => $diners->get());
 
         return view('diners.index', ['diners' => $diners]);
     }
@@ -55,14 +55,13 @@ class DinerController extends Controller
      */
     public function show(Diner $diner)
     {
-        return view(
-            'diners.show',
-            [
-                'diner' => $diner->load([
-                    'reviews' => fn ($query) => $query->latest()
-                ])
-            ]
-        );
+        $cacheKey = 'diner:' . $diner->id;
+
+        $diner = cache()->remember($cacheKey, 3600, fn () => $diner->load([
+            'reviews' => fn ($query) => $query->latest()
+        ]));
+
+        return view('diners.show', ['diner' => $diner]);
     }
 
     /**
