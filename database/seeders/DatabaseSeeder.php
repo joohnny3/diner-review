@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Diner;
+use App\Models\Review;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +15,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Diner::factory(33)->create()->each(function ($diner) {
+            $numReviews = random_int(10, 60);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+            Review::factory()->count($numReviews)
+                ->good()
+                ->for($diner)
+                ->create();
+        });
+
+        Diner::factory(33)->create()->each(function ($diner) {
+            $numReviews = random_int(10, 60);
+
+            Review::factory()->count($numReviews)
+                ->average()
+                ->for($diner)
+                ->create();
+        });
+
+        Diner::factory(34)->create()->each(function ($diner) {
+            $numReviews = random_int(10, 60);
+
+            Review::factory()->count($numReviews)
+                ->bad()
+                ->for($diner)
+                ->create();
+        });
     }
 }
