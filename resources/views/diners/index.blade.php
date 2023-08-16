@@ -10,6 +10,25 @@
         <a href="{{ route('diners.index') }}" class="btn h-10">Clear</a>
     </form>
 
+    <div class="filter-container mb-4 flex">
+        @php
+            $filters = [
+                '' => '最新開幕',
+                'popular_last_month' => '過去 𝟭 個月熱門',
+                'popular_last_6months' => '過去 𝟲 個月熱門',
+                'highest_rated_last_month' => '過去 𝟭 個月高分',
+                'highest_rated_last_6months' => '過去 𝟲 個月高分',
+            ];
+        @endphp
+
+        @foreach ($filters as $key => $label)
+            <a href="{{ route('diners.index', [...request()->query(), 'filter' => $key]) }}"
+                class="{{ request('filter') === $key || (request('filter') === null && $key === '') ? 'filter-item-active' : 'filter-item' }}">
+                {{ $label }}
+            </a>
+        @endforeach
+    </div>
+
     <ul>
         @forelse ($diners as $diner)
             <li class="mb-4">
