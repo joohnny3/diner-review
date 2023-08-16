@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Restaurants</title>
-  <link rel="icon" href="{{ asset('image/cutlery.png') }}" type="image/png">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-  <script src="https://kit.fontawesome.com/59074ffc1b.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+    <link rel="icon" href="{{ asset('image/cutlery.png') }}" type="image/png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script src="https://kit.fontawesome.com/59074ffc1b.js" crossorigin="anonymous"></script>
 
-  {{-- blade-formatter-disable --}}
+    {{-- blade-formatter-disable --}}
   <style type="text/tailwindcss">
     .btn {
       @apply bg-white rounded-md px-4 py-2 text-center font-medium text-slate-500 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 h-10;
@@ -38,7 +38,7 @@
       @apply text-lg font-semibold text-slate-800 hover:text-slate-600;
     }
 
-    .diner-author {
+    .diner-address {
       @apply block text-slate-600;
     }
 
@@ -66,7 +66,7 @@
 </head>
 
 <body class="container mx-auto mt-10 mb-10 max-w-3xl">
-  @yield('content')
+    @yield('content')
 </body>
 
 </html>

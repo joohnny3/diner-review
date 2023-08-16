@@ -19,7 +19,7 @@ class DinerController extends Controller
             $title,
             fn ($query, $title) => $query->title($title)
         );
-        
+
         $diners = match ($filter) {
             'popular_last_month' => $diners->popularLastMonth(),
             'popular_last_6months' => $diners->popularLast6Months(),
@@ -51,9 +51,16 @@ class DinerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Diner $diner)
     {
-        //
+        return view(
+            'diners.show',
+            [
+                'diner' => $diner->load([
+                    'reviews' => fn ($query) => $query->latest()
+                ])
+            ]
+        );
     }
 
     /**

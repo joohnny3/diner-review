@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="mb-10 text-2xl">
-        <i class="fa-solid fa-utensils fa-xs" style="color: #0c0c0e;"></i> Restaurants 
+        <i class="fa-solid fa-utensils fa-xs" style="color: #0c0c0e;"></i> Restaurants
     </h1>
 
     <form action="{{ route('diners.index') }}" method="GET" class="mb-4 flex items-center space-x-2">
@@ -40,7 +40,7 @@
                             <a href="{{ route('diners.show', $diner) }}" class="diner-title">
                                 {{ $diner->title }}
                             </a>
-                            <span class="diner-author">addr. {{ $diner->address }} </span>
+                            <span class="diner-address">addr. {{ $diner->address }} </span>
                         </div>
                         <div>
                             <div class="diner-rating">
@@ -58,7 +58,7 @@
             <li class="mb-4">
                 <div class="empty-diner-item">
                     <p class="empty-text">No restaurants found</p>
-                    <a href="{{route('diners.index')}}" class="reset-link">Reset criteria</a>
+                    <a href="{{ route('diners.index') }}" class="reset-link">Reset criteria</a>
                 </div>
             </li>
         @endforelse

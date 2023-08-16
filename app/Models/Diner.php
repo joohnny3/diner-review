@@ -25,7 +25,7 @@ class Diner extends Model
     public function scopePopular(Builder $query, $from = null, $to = null): Builder|QueryBuilder
     {
         return $query->withCount([
-            'reviews' => fn(Builder $q) => $this->dateRangeFilter($q, $from, $to)
+            'reviews' => fn (Builder $q) => $this->dateRangeFilter($q, $from, $to)
         ])
             ->orderBy('reviews_count', 'desc');
     }
@@ -33,7 +33,7 @@ class Diner extends Model
     public function scopeHighestRated(Builder $query, $from = null, $to = null): Builder|QueryBuilder
     {
         return $query->withAvg([
-            'reviews' => fn(Builder $q) => $this->dateRangeFilter($q, $from, $to)
+            'reviews' => fn (Builder $q) => $this->dateRangeFilter($q, $from, $to)
         ], 'rating')
             ->orderBy('reviews_avg_rating', 'desc');
     }
