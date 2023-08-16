@@ -15,4 +15,10 @@ class Review extends Model
     {
         return $this->belongsTo(Diner::class);
     }
+
+    protected static function booted()
+    {
+        static::updated(fn (Review $review) => cache()->forget('diner:' . $review->diner_id));
+        static::deleted(fn (Review $review) => cache()->forget('diner:' . $review->diner_id));
+    }
 }
