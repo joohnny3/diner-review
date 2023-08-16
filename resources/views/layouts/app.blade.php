@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Restaurants</title>
+  <link rel="icon" href="{{ asset('image/cutlery.png') }}" type="image/png">
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 
   {{-- blade-formatter-disable --}}
