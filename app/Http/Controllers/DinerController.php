@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diner;
 use Illuminate\Http\Request;
 
 class DinerController extends Controller
@@ -9,9 +10,17 @@ class DinerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $title = $request->input('title');
+
+        $diners = Diner::when(
+            $title,
+            fn ($query, $title) => $query->title($title)
+        )
+            ->get();
+
+        return view('diners.index', ['diners' => $diners]);
     }
 
     /**
