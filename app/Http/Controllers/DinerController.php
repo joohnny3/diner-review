@@ -27,7 +27,9 @@ class DinerController extends Controller
             'highest_rated_last_6months' => $diners->highestRatedLast6Months(),
             default => $diners->latest()
         };
-        $diners = $diners->get();
+
+        $cacheKey = 'diners:' . $filter . ':' . $title;
+        $diners = cache()->remember($cacheKey, 3600, fn() => $diners->get());
 
         return view('diners.index', ['diners' => $diners]);
     }
