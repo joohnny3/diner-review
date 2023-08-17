@@ -25,7 +25,7 @@ class DinerController extends Controller
             'popular_last_6months' => $diners->popularLast6Months(),
             'highest_rated_last_month' => $diners->highestRatedLastMonth(),
             'highest_rated_last_6months' => $diners->highestRatedLast6Months(),
-            default => $diners->latest()
+            default => $diners->latest()->withAvgRating()->withReviewsCount()
         };
 
         // $cacheKey = 'diners:' . $filter . ':' . $title;
@@ -53,13 +53,18 @@ class DinerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Diner $diner)
+    public function show(int $id)
     {
-        $cacheKey = 'diner:' . $diner->id;
+        $cacheKey = 'diner:' . $id;
 
-        $diner = cache()->remember($cacheKey, 3600, fn () => $diner->load([
-            'reviews' => fn ($query) => $query->latest()
-        ]));
+        $diner = cache()->remember(
+            $cacheKey,
+            3,
+            fn() =>
+            Diner::with([
+                'reviews' => fn($query) => $query->latest()
+            ])->withAvgRating()->withReviewsCount()->findOrFail($id)
+        );
 
         return view('diners.show', ['diner' => $diner]);
     }
