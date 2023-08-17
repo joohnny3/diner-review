@@ -44,7 +44,7 @@
                         </div>
                         <div>
                             <div class="diner-rating">
-                                {{ number_format($diner->reviews_avg_rating, 1) }}
+                                <x-star-rating :rating="$diner->reviews_avg_rating" />
                             </div>
                             <div class="diner-review-count"></div>
                             {{ $diner->reviews_count }}
