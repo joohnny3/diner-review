@@ -28,8 +28,8 @@ class DinerController extends Controller
             default => $diners->latest()
         };
 
-        $cacheKey = 'diners:' . $filter . ':' . $title;
-        $diners = cache()->remember($cacheKey, 3600, fn () => $diners->get());
+        // $cacheKey = 'diners:' . $filter . ':' . $title;
+        $diners = $diners->get();
 
         return view('diners.index', ['diners' => $diners]);
     }
