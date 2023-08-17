@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DinerController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,6 @@ Route::get('/', function () {
     return redirect()->route('diners.index');
 });
 
-Route::resource('diners',DinerController::class);
+Route::resource('diners', DinerController::class)->only(['index', 'show']);
+
+Route::resource('diners.reviews', ReviewController::class)->scoped(['review' => 'diner'])->only(['create', 'store']);

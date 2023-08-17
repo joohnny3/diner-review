@@ -7,6 +7,9 @@
         <div class="diner-info">
             <div class="diner-address mb-4 text-lg font-semibold">{{ $diner->address }}</div>
             <div class="diner-rating flex items-center">
+                <div class="mr-2 text-xl font-medium text-slate-700">
+                    {{ number_format($diner->reviews_avg_rating, 1) }}
+                </div>
                 <div class="mr-2 text-sm font-medium text-slate-700">
                     <x-star-rating :rating="$diner->reviews_avg_rating" />
                 </div>
@@ -16,6 +19,11 @@
             </div>
         </div>
     </div>
+
+    <div class="mb-4">
+        <a href="{{ route('diners.reviews.create', $diner) }}" class="reset-link">
+            <i class="fa-regular fa-pen-to-square fa-lg" style="color: #4e5c73;"></i>   撰寫評論</a>
+      </div>
 
     <div>
         <h2 class="mb-4 text-xl font-semibold">評論</h2>

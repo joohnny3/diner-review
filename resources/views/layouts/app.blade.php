@@ -59,7 +59,7 @@
     }
 
     .reset-link {
-      @apply text-slate-500 underline;
+      @apply text-slate-700 no-underline;
     }
   </style>
   {{-- blade-formatter-enable --}}
