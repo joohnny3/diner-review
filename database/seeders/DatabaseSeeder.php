@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Diner::factory(33)->create()->each(function ($diner) {
-            $numReviews = random_int(10, 60);
+        Diner::factory(100)->create()->each(function ($diner) {
+            $numReviews = random_int(50, 100);
 
             Review::factory()->count($numReviews)
                 ->good()
@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
                 ->create();
         });
 
-        Diner::factory(33)->create()->each(function ($diner) {
-            $numReviews = random_int(10, 60);
+        Diner::factory(100)->create()->each(function ($diner) {
+            $numReviews = random_int(40, 90);
 
             Review::factory()->count($numReviews)
                 ->average()
@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
                 ->create();
         });
 
-        Diner::factory(34)->create()->each(function ($diner) {
-            $numReviews = random_int(10, 60);
+        Diner::factory(100)->create()->each(function ($diner) {
+            $numReviews = random_int(30, 80);
 
             Review::factory()->count($numReviews)
                 ->bad()

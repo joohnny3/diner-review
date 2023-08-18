@@ -16,7 +16,7 @@ class DinerFactory extends Factory
      */
     public function definition(): array
     {
-        $appendTitles = ['餐廳', '小吃', '飯店', '料理', '速食', '麵店', '咖啡廳', '港式飲茶', '麵店'];
+        $appendTitles = ['餐廳', '小吃', '飯店', '義式料理', '速食', '麵店', '咖啡廳', '港式飲茶', '韓式料理', '素食', '日式料理', '火鍋', '燒烤'];
 
         return [
             'title' => fake('zh_TW')->firstName . $appendTitles[array_rand($appendTitles)],
