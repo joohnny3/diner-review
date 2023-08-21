@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="mb-4">
-        <h1 class="top-0 mb-2 text-2xl">{{ $diner->title }}</h1>
+        <div class="flex justify-between">
+            <h1 class="top-0 mb-2 text-2xl">{{ $diner->title }}</h1>
+            <a href="{{ route('diners.index') }}" class="btn mr-2"><i class="fa-solid fa-xmark"></i></a>
+        </div>
 
         <div class="diner-info">
             <div class="diner-address mb-4 text-lg font-semibold">{{ $diner->address }}</div>
@@ -22,8 +25,8 @@
 
     <div class="mb-4">
         <a href="{{ route('diners.reviews.create', $diner) }}" class="reset-link">
-            <i class="fa-regular fa-pen-to-square fa-lg" style="color: #4e5c73;"></i>   撰寫評論</a>
-      </div>
+            <i class="fa-regular fa-pen-to-square fa-lg" style="color: #4e5c73;"></i> 撰寫評論</a>
+    </div>
 
     <div>
         <h2 class="mb-4 text-xl font-semibold">評論</h2>
