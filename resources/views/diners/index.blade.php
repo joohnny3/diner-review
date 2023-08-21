@@ -34,7 +34,7 @@
     <ul>
         @forelse ($diners as $diner)
             <li class="mb-4">
-                <div class="diner-item">
+                <div class="diner-item hover:bg-slate-50">
                     <div class="flex flex-wrap items-center justify-between">
                         <div class="w-full flex-grow sm:w-auto">
                             <a href="{{ route('diners.show', $diner) }}" class="diner-title">
