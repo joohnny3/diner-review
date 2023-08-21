@@ -7,6 +7,10 @@
     <link rel="icon" href="{{ asset('image/cutlery.png') }}" type="image/png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
     <script src="https://kit.fontawesome.com/59074ffc1b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     {{-- blade-formatter-disable --}}
   <style type="text/tailwindcss">

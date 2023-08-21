@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="mb-10 text-2xl">
+    <h1 class="mb-5 text-4xl animate__animated animate__fadeInDown" style="font-family: 'Lobster', cursive;">
         <i class="fa-solid fa-utensils fa-xs" style="color: #0c0c0e;"></i> Restaurants
     </h1>
 
     <form action="{{ route('diners.index') }}" method="GET" class="mb-4 flex items-center space-x-2">
         <input type="text" name="title" placeholder="搜尋餐廳" value="{{ request('title') }}" class="input h-10">
         <input type="hidden" name="filter" value="{{ request('filter') }}" />
-        <button type="submit" class="btn h-10">Search</button>
-        <a href="{{ route('diners.index') }}" class="btn h-10">Clear</a>
+        <button type="submit" class="btn h-10"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <a href="{{ route('diners.index') }}" class="btn h-10"><i class="fa-solid fa-xmark"></i></a>
     </form>
 
     <div class="filter-container mb-4 flex">
